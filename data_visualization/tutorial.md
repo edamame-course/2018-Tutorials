@@ -232,7 +232,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   xlab("Fire history") +
   labs(color = "Temperature (°C)") 
 ```
-![boxplot_final](https://github.com/edamame-course/2018-Tutorials/blob/master/images/gene.boxplot.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/gene.boxplot.png" width="600">
 
 * __Checkpoint__: _What if we wanted to change a shape label?_
 
@@ -268,7 +268,7 @@ Using the same data, let's make some bar charts. When using bar charts, we need 
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar() 
 ```
-![bar](https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar.png" width="400">
 
 
 The plot should show that we have 7 fire affected sites, 5 recovered sites, and one reference site. Be careful with `geom_bar`... look what happens if we used this same code on the full dataset:
@@ -276,7 +276,7 @@ The plot should show that we have 7 fire affected sites, 5 recovered sites, and 
 ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() 
 ```
-![bar_full](https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar_full.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar_full.png" width="600">
 
 * __Checkpoint:__ _Do we actually have > 60 fire affected sites? Why does it look like this?_
 
@@ -286,21 +286,21 @@ ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() +
   facet_wrap(~Gene)
 ```
-![bar_facet](https://github.com/edamame-course/2018-Tutorials/blob/master/images/facet_bar.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/facet_bar.png" width="600">
 
 Up to this point, we have used `color` to add color to a plot, but `geom_bar` is a great function to examine the difference between `color` and `fill`. Let's compare them on our bar chart to get an idea of what it does
 ```
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar(color = "black") 
 ```
-![bar_color](https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_color.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_color.png" width="600">
 
 now try fill
 ```
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar(fill = "black")
 ```
-![bar_fill](https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_fill.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_fill.png" width="400">
 
 * __Pro tip:__ either `color` or `fill` can be used to color points.
 
@@ -309,7 +309,7 @@ It's often useful to use color to highlight separation of different colors of a 
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black", aes(fill = Gene)) 
 ```
-![bar_fill_color](https://github.com/edamame-course/2018-Tutorials/blob/master/images/stacked_bar_fill.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/stacked_bar_fill.png" width="400">
 
 * __Checkpoint:__ _Why is `color` outside of `aes` here? Why is `fill` inside `aes`?_
 
@@ -328,17 +328,17 @@ ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   * Hint 1: You can subset your data within ggplot!
   * Hint 2: What layer do we use to change coordinates?
 
-![pie](https://github.com/edamame-course/2018-Tutorials/blob/master/images/pie.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/pie.png" width="600">
 
 
 ## Challenge #1
 Using the same data, make this graph:
-
-![c1](https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge1.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge1.png" width="600">
 
 ## Challenge #2
 Using the same data, make this graph:
-![c2](https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge2.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge2.png" width="600">
+
 
 ## Answer key
 ### Activity 1
