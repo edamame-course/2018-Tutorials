@@ -304,29 +304,29 @@ Using the same data, make this graph:
 Using the same data, make this graph:
 
 ## Answer key
-* Activity 1: Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
+### Activity 1: Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
 
-* Activity 2
+### Activity 2
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() 
 ```
 
-* Activity 3
+### Activity 3
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
   geom_jitter(size = 3, color = "red", width = 0.2) 
 ```
 
-* Activity 4
+### Activity 4
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
   geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) 
 ```
 
-* Activity 5
+### Activity 5
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
@@ -335,7 +335,7 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   coord_flip()
 ```
 
-* Activity 6
+### Activity 6
 ```
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
@@ -345,7 +345,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   theme_bw()
 ```
 
-* Activity 6.5
+### Activity 6.5
 ```
 install.packages("ggthemes")
 library(ggthemes)
@@ -358,7 +358,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   theme_wsj()
 ```
 
-* Activity 7
+### Activity 7
 ```
 ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black",  aes(fill = Gene), width = 1) +
@@ -367,7 +367,7 @@ ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abu
   theme(axis.text.x=element_blank())
 ```
 
-Challenge 1
+### Challenge 1
 ```
 ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
   geom_smooth(method = "lm", linetype = "dashed", color = "black") +
@@ -378,7 +378,7 @@ ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
   ylab("Normalized abundance")
 ```
 
-Challenge 2
+### Challenge 2
 ```
 ggplot(data.annotated, aes(x = Site, y = Gene)) +
   geom_point(aes(size = Normalized.abundance, color = Temperature)) +
