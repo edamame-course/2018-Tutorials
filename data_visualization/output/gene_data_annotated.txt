@@ -1,0 +1,118 @@
+Site	Gene	Normalized.abundance	Temperature	Fire_history
+Cen01	acr3	0.193455245428296	14.1	recovered
+Cen01	aioA	0.0173243503368624	14.1	recovered
+Cen01	arrA	0	14.1	recovered
+Cen01	arsB	0	14.1	recovered
+Cen01	arsC_glut	0.1944177093359	14.1	recovered
+Cen01	arsC_thio	0.0173243503368624	14.1	recovered
+Cen01	arsD	0.00481231953801732	14.1	recovered
+Cen01	arsM	0.397497593840231	14.1	recovered
+Cen01	arxA	0	14.1	recovered
+Cen03	acr3	0.145850796311819	14.7	recovered
+Cen03	aioA	0.0100586756077117	14.7	recovered
+Cen03	arrA	0	14.7	recovered
+Cen03	arsB	0	14.7	recovered
+Cen03	arsC_glut	0.179379715004191	14.7	recovered
+Cen03	arsC_thio	0.00838222967309304	14.7	recovered
+Cen03	arsD	0.00419111483654652	14.7	recovered
+Cen03	arsM	0.429170159262364	14.7	recovered
+Cen03	arxA	0	14.7	recovered
+Cen04	acr3	0.462077012835473	13.3	recovered
+Cen04	aioA	0.0233372228704784	13.3	recovered
+Cen04	arrA	0	13.3	recovered
+Cen04	arsB	0	13.3	recovered
+Cen04	arsC_glut	0.162193698949825	13.3	recovered
+Cen04	arsC_thio	0.0338389731621937	13.3	recovered
+Cen04	arsD	0.0210035005834306	13.3	recovered
+Cen04	arsM	0.61610268378063	13.3	recovered
+Cen04	arxA	0	13.3	recovered
+Cen05	acr3	0.213935230618253	14	recovered
+Cen05	aioA	0.0480863591756624	14	recovered
+Cen05	arrA	0	14	recovered
+Cen05	arsB	0	14	recovered
+Cen05	arsC_glut	0.225711481844946	14	recovered
+Cen05	arsC_thio	0.00588812561334642	14	recovered
+Cen05	arsD	0.00883218842001963	14	recovered
+Cen05	arsM	0.493621197252208	14	recovered
+Cen05	arxA	0	14	recovered
+Cen06	acr3	0.366724738675958	24.1	fire affected
+Cen06	aioA	0.00958188153310104	24.1	fire affected
+Cen06	arrA	0	24.1	fire affected
+Cen06	arsB	0	24.1	fire affected
+Cen06	arsC_glut	0.306620209059234	24.1	fire affected
+Cen06	arsC_thio	0.00696864111498257	24.1	fire affected
+Cen06	arsD	0.0113240418118467	24.1	fire affected
+Cen06	arsM	0.689024390243902	24.1	fire affected
+Cen06	arxA	0	24.1	fire affected
+Cen07	acr3	0.175421209117939	13.5	recovered
+Cen07	aioA	0.0148662041625372	13.5	recovered
+Cen07	arrA	0	13.5	recovered
+Cen07	arsB	0	13.5	recovered
+Cen07	arsC_glut	0.178394449950446	13.5	recovered
+Cen07	arsC_thio	0.0109018830525273	13.5	recovered
+Cen07	arsD	0.0247770069375619	13.5	recovered
+Cen07	arsM	0.445986124876115	13.5	recovered
+Cen07	arxA	0	13.5	recovered
+Cen10	acr3	0.417708685366678	54.2	fire affected
+Cen10	aioA	0.00743494423791822	54.2	fire affected
+Cen10	arrA	0	54.2	fire affected
+Cen10	arsB	0.00439337614058802	54.2	fire affected
+Cen10	arsC_glut	0.066238594119635	54.2	fire affected
+Cen10	arsC_thio	0.00777289624873267	54.2	fire affected
+Cen10	arsD	0.000337952010814464	54.2	fire affected
+Cen10	arsM	0.567083474146671	54.2	fire affected
+Cen10	arxA	0	54.2	fire affected
+Cen12	acr3	0.365472910927457	32	fire affected
+Cen12	aioA	0.000918273645546373	32	fire affected
+Cen12	arrA	0	32	fire affected
+Cen12	arsB	0	32	fire affected
+Cen12	arsC_glut	0.151974288337925	32	fire affected
+Cen12	arsC_thio	0.000918273645546372	32	fire affected
+Cen12	arsD	0.0183654729109274	32	fire affected
+Cen12	arsM	0.784205693296602	32	fire affected
+Cen12	arxA	0	32	fire affected
+Cen13	acr3	0.132352941176471	57.4	fire affected
+Cen13	aioA	0.0115864527629234	57.4	fire affected
+Cen13	arrA	0.0120320855614973	57.4	fire affected
+Cen13	arsB	0	57.4	fire affected
+Cen13	arsC_glut	0.0450089126559715	57.4	fire affected
+Cen13	arsC_thio	0.0111408199643494	57.4	fire affected
+Cen13	arsD	0	57.4	fire affected
+Cen13	arsM	0.474598930481284	57.4	fire affected
+Cen13	arxA	0.0405525846702317	57.4	fire affected
+Cen14	acr3	0.193121693121693	34.1	fire affected
+Cen14	aioA	0	34.1	fire affected
+Cen14	arrA	0	34.1	fire affected
+Cen14	arsB	0	34.1	fire affected
+Cen14	arsC_glut	0.0306878306878307	34.1	fire affected
+Cen14	arsC_thio	0.00740740740740741	34.1	fire affected
+Cen14	arsD	0.00105820105820106	34.1	fire affected
+Cen14	arsM	0.586772486772487	34.1	fire affected
+Cen14	arxA	0	34.1	fire affected
+Cen15	acr3	0.420650095602294	38.9	fire affected
+Cen15	aioA	0	38.9	fire affected
+Cen15	arrA	0	38.9	fire affected
+Cen15	arsB	0	38.9	fire affected
+Cen15	arsC_glut	0.236456341618866	38.9	fire affected
+Cen15	arsC_thio	0.00127469725940089	38.9	fire affected
+Cen15	arsD	0.0274059910771191	38.9	fire affected
+Cen15	arsM	0.620140216698534	38.9	fire affected
+Cen15	arxA	0	38.9	fire affected
+Cen16	acr3	0.359607218683652	21.7	fire affected
+Cen16	aioA	0.012208067940552	21.7	fire affected
+Cen16	arrA	0	21.7	fire affected
+Cen16	arsB	0	21.7	fire affected
+Cen16	arsC_glut	0.106687898089172	21.7	fire affected
+Cen16	arsC_thio	0.0180467091295116	21.7	fire affected
+Cen16	arsD	0.0106157112526539	21.7	fire affected
+Cen16	arsM	0.569002123142251	21.7	fire affected
+Cen16	arxA	0	21.7	fire affected
+Cen17	acr3	0.0571923743500867	12.1	reference
+Cen17	aioA	0.00519930675909879	12.1	reference
+Cen17	arrA	0	12.1	reference
+Cen17	arsB	0	12.1	reference
+Cen17	arsC_glut	0.162911611785095	12.1	reference
+Cen17	arsC_thio	0.024263431542461	12.1	reference
+Cen17	arsD	0.00519930675909879	12.1	reference
+Cen17	arsM	0.207972270363952	12.1	reference
+Cen17	arxA	0	12.1	reference

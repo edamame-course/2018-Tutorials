@@ -13,6 +13,8 @@ meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
 data.annotated <- data %>%
   left_join(meta, by = "Site")
 
+write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+
 geneA <- data.annotated %>%
   subset(Gene == "arsM")
 
@@ -68,36 +70,52 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   facet_wrap(~Gene, scales = "free_y") +
   theme_light()
 
+#ADDITIONAL AESTHETICS
+ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  scale_color_continuous(low = "yellow", high = "red") +
+  facet_wrap(~Gene, scales = "free_y") +
+  theme_bw(base_size = 10) +
+  ylab("Normalized abundance") +
+  xlab("Fire history") +
+  labs(color = "Temperature (°C)") + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+
 #EXERCISE #2
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black", aes(fill = Gene)) +
   coord_flip() 
 
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", position = "fill", aes(fill = Gene)) +
-  coord_flip() 
-
-ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", position = "fill", aes(fill = Gene)) +
-  coord_polar(start = 0, "y") +
-  facet_wrap(~Site)
-
-ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", position = "fill", aes(fill = Gene)) 
-  coord_flip()
-
-ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black", position = "dodge", aes(fill = Gene)) +
   coord_flip() 
 
+ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
+  geom_bar(stat = "identity", color = "black", position = "fill", aes(fill = Gene)) +
+  coord_flip() 
+
+ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_bar(stat = "identity", position = "fill", aes(fill = Gene)) 
+
+ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance)) +
+  geom_bar(stat = "identity", color = "black",  aes(fill = Gene), width = 1) +
+  coord_polar(start = 0, "y") +
+  theme_void() +
+  theme(axis.text.x=element_blank())
+
 #EXERCISE #3
-ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance, shape = Fire_history, color = Gene)) +
-  geom_point(size = 3) +
-  facet_wrap(~Gene, scales = "free_y")
+ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance, color = Gene)) +
+  geom_smooth(method = "lm", linetype = "dashed") +
+  geom_point(size = 3, aes(shape = Fire_history)) +
+  facet_wrap(~Gene, scales = "free_y") +
+  theme_bw(base_size = 10) +
+  xlab("Temperature (°C)") +
+  ylab("Normalized abundance")
 
-#EXERCISE #4
-ggplot(data.annotated, aes(x = Fire_history, fill = Fire_history)) +
-  geom_histogram(stat = "count") +
-  coord_polar(start = 0)
 
-
+ggplot(data.annotated, aes(x = Site, y = Gene)) +
+  geom_point(aes(size = Normalized.abundance, color = Temperature)) +
+  geom_point(aes(size = Normalized.abundance), shape = 1, color = "black") +
+  scale_color_continuous(low = "yellow", high = "red") +
+  theme_bw()
