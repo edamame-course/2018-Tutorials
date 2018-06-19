@@ -116,11 +116,11 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 
 ***
 
-### Activity 2: Let's try a boxplot instead of a point.
+* Activity 2: Let's try a boxplot instead of a point.
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 
-### Checkpoint: _How do we add points to this plot? How can we control what is the top layer?_
+* __Checkpoint:__ _How do we add points to this plot? How can we control what is the top layer?_
 
 This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
