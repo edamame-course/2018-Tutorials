@@ -103,14 +103,14 @@ Now that we know what to expect, let's plot stuff! The `ggplot` command is used 
 ```
 ggplot(geneA)
 ```
-
-* __Checkpoint:__ _What do you see?_
+![simple plot](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot.png)
 
 Looks like we need to add some aesthetics using `aes`. To start, we will use `Fire_history` as our x-value and `Normalized.abundance` for our y-value
 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance))
 ```
+![xy plot](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot_xy.png)
 
 * __Checkpoint:__ _What type of data is this? What's missing here?_
 
@@ -121,12 +121,18 @@ Geometric layers are added with functions that have a `geom_` prefix. Let's try 
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_point() 
 ```
+![geom_point](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_points.png)
+
 * __Pro tip:__ it seems like a `%>%` would be appropriate to use here, but unfortunately, `ggplot` was created before the pipe existed. To layer in `ggplot`, you *must* use `+`
 * __Checkpoint:__ _What's a better way of looking at this data?_
 * __Activity 2:__ Let's try a boxplot instead of a point.
 
+![boxplot](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_boxplot.png)
+
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 * __Checkpoint:__ _How do we add points to this plot? How can we control what is the top layer?_
+
+![boxplotpoint](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_point.png)
 
 This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
@@ -134,11 +140,17 @@ This plot still does not highlight all of our information. The points are too sm
 * __Activity 3:__ Make a boxplot with jittered points that are larger and colored
 * __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
+![boxplot_jitter](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_better.png)
+
 ## Aesthetic layers
 We are already a little familiar with aesthetics since we used `aes` to designate our x and y values. Based on this, _can you guess when it is appropriate to use `aes`?
 
-* __Activity 4:__ let's add color to the plot based on the temperature of a site. 
+* __Activity 4:__ let's add color to the plot based on the temperature of a site.
+
+![boxplot_jitter_temp](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp.png)
+
 * __Checkpoint:__ _Where is the best place to designate color? Why?_
+
 
 ## Scale layers
 Our plot is looking good! Let's control the temperature color so that it's easier to see. For this we would use `scale_color_continuous` 
@@ -150,6 +162,8 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   scale_color_continuous(low = "yellow", high = "red")
 ```
 
+![boxplot_jitter_temp_better](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_better.png)
+
 * __Checkpoint:__ _What scale would we use if we did not have continuous data?_  
 * __Pro tip :__ You can explore different options by hitting the tab key. For example, to explore different `scale` functions, type `scale` and hit `tab`. An options list should come up. 
 * __Pro tip:__ You can do this within a function as well! For example, `scale_color_continuous(` and `tab` will bring up options such as `low` and `high`, which we used in this function!
@@ -158,10 +172,13 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 ## Coordinate layers
 As the name implies, coordinate layers impact the *coordinates* of a plot. 
 
-* __Activity 5:__ flip the x and y coordinates
 * __Pro tip:__ It is recomended to flip coordinates when labels for your x values are long and difficult to read
+* __Activity 5:__ flip the x and y coordinates
 
-##Facet layers
+![boxplot_jitter_temp_flip](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_flip.png)
+
+
+## Facet layers
 As microbial ecologists, you probably are working with more than one gene (or taxonomic group or organism) at a time. This makes faceting very useful. The word facet literally means side or plane. Thus, faceting in R will will separate your plot into multiple panels to show the different sides/ planes of your data. To explore faceting, let's go back to our full dataset `data.annotated`. As you might expect, facet functions begin with the prefix `facet_`. 
 
 ```
@@ -171,11 +188,13 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene)
 ```
+![boxplot_facet](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_fixed.png)
 
 * __Pro tip:__ the `~` in R essentially translates to "by". The above line reads "facet_wrap by column Gene"
 * __Checkpoint:__ _How can we improve this plot? Are we missing/distorting any of our data?_
 * __Checkpoint:__ _How could we look at options for faceting?_
 
+![boxplot_facet_free](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_free.png)
 
 ## Theme layers
 With an additional line of code, you can easily change the "ambience" or theme of your plot. Theme functions have the prefix `theme`.
@@ -194,6 +213,9 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   theme_bw(base_size = 12) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ```
+![boxplot_theme](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_bw_angle.png)
+
+
 
 ## Label layers
 It can be annoying to have spaces within data in R. We get around this by using `.` or `_` as spaces, but those are not ideal when publishing a figure. Label or `lab` functions can be used to easily adjust labels on a plot. Let's try some:
@@ -210,6 +232,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   xlab("Fire history") +
   labs(color = "Temperature (°C)") 
 ```
+![boxplot_final](https://github.com/edamame-course/2018-Tutorials/blob/master/images/gene.boxplot.png)
 
 * __Checkpoint__: _What if we wanted to change a shape label?_
 
@@ -245,12 +268,15 @@ Using the same data, let's make some bar charts. When using bar charts, we need 
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar() 
 ```
+![bar](https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar.png)
+
 
 The plot should show that we have 7 fire affected sites, 5 recovered sites, and one reference site. Be careful with `geom_bar`... look what happens if we used this same code on the full dataset:
 ```
 ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() 
 ```
+![bar_full](https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar_full.png)
 
 * __Checkpoint:__ _Do we actually have > 60 fire affected sites? Why does it look like this?_
 
@@ -260,18 +286,21 @@ ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() +
   facet_wrap(~Gene)
 ```
+![bar_facet](https://github.com/edamame-course/2018-Tutorials/blob/master/images/facet_bar.png)
 
 Up to this point, we have used `color` to add color to a plot, but `geom_bar` is a great function to examine the difference between `color` and `fill`. Let's compare them on our bar chart to get an idea of what it does
 ```
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar(color = "black") 
 ```
+![bar_color](https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_color.png)
 
 now try fill
 ```
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar(fill = "black")
 ```
+![bar_fill](https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_fill.png)
 
 * __Pro tip:__ either `color` or `fill` can be used to color points.
 
@@ -280,6 +309,8 @@ It's often useful to use color to highlight separation of different colors of a 
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black", aes(fill = Gene)) 
 ```
+![bar_fill_color](https://github.com/edamame-course/2018-Tutorials/blob/master/images/stacked_bar_fill.png)
+
 * __Checkpoint:__ _Why is `color` outside of `aes` here? Why is `fill` inside `aes`?_
 
 In addition to `stat` mappings, `geom_bar` also offers `position` mapping. The default is `position = "stack"`.
@@ -297,11 +328,18 @@ ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   * Hint 1: You can subset your data within ggplot!
   * Hint 2: What layer do we use to change coordinates?
 
+![pie](https://github.com/edamame-course/2018-Tutorials/blob/master/images/pie.png)
+
+
 ## Challenge #1
 Using the same data, make this graph:
 
+![c1](https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge1.png)
+
 ## Challenge #2
 Using the same data, make this graph:
+
+![c2](https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge2.png)
 
 ## Answer key
 ### Activity 1: Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
