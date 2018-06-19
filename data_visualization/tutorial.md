@@ -276,7 +276,7 @@ The plot should show that we have 7 fire affected sites, 5 recovered sites, and 
 ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() 
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar_full.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/simple_bar_full.png" width="400">
 
 * __Checkpoint:__ _Do we actually have > 60 fire affected sites? Why does it look like this?_
 
@@ -286,14 +286,14 @@ ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() +
   facet_wrap(~Gene)
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/facet_bar.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/facet_bar.png" width="500">
 
 Up to this point, we have used `color` to add color to a plot, but `geom_bar` is a great function to examine the difference between `color` and `fill`. Let's compare them on our bar chart to get an idea of what it does
 ```
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar(color = "black") 
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_color.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/bar_color.png" width="400">
 
 now try fill
 ```
