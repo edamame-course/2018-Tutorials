@@ -338,11 +338,11 @@ Using the same data, make this graph:
 
 ## Challenge #2
 Using the same data, make this graph:
-
 ![c2](https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge2.png)
 
 ## Answer key
-### Activity 1: Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
+### Activity 1
+Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
 
 ### Activity 2
 ```
