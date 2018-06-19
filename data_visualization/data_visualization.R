@@ -1,7 +1,6 @@
 #load required packages
 #install via install.packages("PACKAGE")
 library(tidyverse)
-library(reshape2)
 
 #read in gene abundance data
 data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
@@ -33,10 +32,18 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
+  geom_jitter() 
+
+ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
   geom_jitter(size = 3, color = "red", width = 0.2) 
 
-
 #AESTHETIC layers
+ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) 
+
+#SCALE layers
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
   geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
@@ -68,7 +75,15 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
-  theme_light()
+  theme_bw()
+
+ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  scale_color_continuous(low = "yellow", high = "red") +
+  facet_wrap(~Gene, scales = "free_y") +
+  theme_bw(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 
 #ADDITIONAL AESTHETICS
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
@@ -77,26 +92,37 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw(base_size = 10) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
   ylab("Normalized abundance") +
   xlab("Fire history") +
-  labs(color = "Temperature (°C)") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
+  labs(color = "Temperature (°C)") 
 
-#EXERCISE #2
+
+#EXERCISE #2: bar charts
+ggplot(geneA, aes(x = Fire_history)) +
+  geom_bar() 
+
+ggplot(data.annotated, aes(x = Fire_history)) +
+  geom_bar() 
+
+ggplot(data.annotated, aes(x = Fire_history)) +
+  geom_bar() +
+  facet_wrap(~Gene)
+
+ggplot(geneA, aes(x = Fire_history)) +
+  geom_bar(color = "black") 
+
+ggplot(geneA, aes(x = Fire_history)) +
+  geom_bar(fill = "black") 
+
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", aes(fill = Gene)) +
-  coord_flip() 
+  geom_bar(stat = "identity", color = "black", aes(fill = Gene)) 
 
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", position = "dodge", aes(fill = Gene)) +
-  coord_flip() 
+  geom_bar(stat = "identity", color = "black", position = "dodge", aes(fill = Gene)) 
 
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", position = "fill", aes(fill = Gene)) +
-  coord_flip() 
-
-ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", position = "fill", aes(fill = Gene)) 
+  geom_bar(stat = "identity", color = "black", position = "fill", aes(fill = Gene))
 
 ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black",  aes(fill = Gene), width = 1) +
@@ -104,18 +130,19 @@ ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abu
   theme_void() +
   theme(axis.text.x=element_blank())
 
-#EXERCISE #3
-ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance, color = Gene)) +
-  geom_smooth(method = "lm", linetype = "dashed") +
-  geom_point(size = 3, aes(shape = Fire_history)) +
+#Challenge 1
+ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
+  geom_smooth(method = "lm", linetype = "dashed", color = "black") +
+  geom_point(size = 3, aes(shape = Fire_history, color = Gene)) +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw(base_size = 10) +
   xlab("Temperature (°C)") +
   ylab("Normalized abundance")
 
-
+#Challenge 2
 ggplot(data.annotated, aes(x = Site, y = Gene)) +
   geom_point(aes(size = Normalized.abundance, color = Temperature)) +
   geom_point(aes(size = Normalized.abundance), shape = 1, color = "black") +
   scale_color_continuous(low = "yellow", high = "red") +
-  theme_bw()
+  theme_bw() +
+  coord_flip()
