@@ -49,8 +49,11 @@ Notice how we did not use quotes this time. This is because "" in R refer to thi
 
  
 ## Reading in/ tidying data
+For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned this repository, you should have the data file in your `data` folder (`gene_abundance_centralia.txt`). It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
 
-For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned this repository, you should have the data file in your `data` folder (`gene_abundance_centralia.txt`). It tells us the normalized abundance for each Site (13 total) and each gene (9 total). Let's read in this gene abundance data:
+### Reading in data
+Let's read in our gene abundance data:
+
 ```
 data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
 ```
@@ -62,12 +65,14 @@ This data, like most data you will work with, does not have all of our informati
 meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
 ```
 
+### Annotating your data
 Let's add our metadata to our data. Here we will assign a new variable using ` <- `. We will also use a pipe `%>%`, which means "then do" in R. The code reads as follows take `data` then do a `left_join` with `meta` by the `Site` column. 
 ```
 data.annotated <- data %>%
   left_join(meta, by = "Site")
 ```
 
+### Saving a table
 You might want to save this annotated data so that you have it handy in the future. We will export it here:
 ```
 write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
@@ -114,9 +119,7 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 
 * __Checkpoint:__ _What's a better way of looking at this data?_
 
-***
-
-* Activity 2: Let's try a boxplot instead of a point.
+* __Activity 2:__ Let's try a boxplot instead of a point.
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 
