@@ -86,17 +86,19 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 
 #ADDITIONAL AESTHETICS
-ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
+(boxplot <- ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw(base_size = 10) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)) +
   ylab("Normalized abundance") +
   xlab("Fire history") +
-  labs(color = "Temperature (°C)") 
+  labs(color = "Temperature (°C)"))
 
+#SAVING a plot
+ggsave(boxplot, filename = "figures/gene.boxplot.eps", units = "in", width = 6, height = 4)
 
 #EXERCISE #2: bar charts
 ggplot(geneA, aes(x = Fire_history)) +
