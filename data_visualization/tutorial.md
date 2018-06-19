@@ -45,7 +45,7 @@ library(tidyverse)
 
 Notice how we did not use quotes this time. This is because "" in R refer to things outside of R. Before installing, tidyverse was outside of R. Once installed, R "knows about" tidyverse, so quotes are no longer needed. 
 
-It is a good idea to load all required packages at the beginning of an R script. This helps people who are using your code know what they need to load/ install. 
+* __Pro tip:__ It is a good idea to load all required packages at the beginning of an R script. This helps people who are using your code know what they need to load/ install. 
 
  
 ## Reading in/ tidying data
@@ -55,21 +55,20 @@ For this tutorial we will use *real* data! This is gene abundance data from a si
 data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
 ```
 
-* Pro tip: you can press `Alt` +  `-` (or `option` + `-` for mac) at the same time to insert ` <- `. This saves key strokes and makes you less likely to use an `=`. While they are *technically* interchangable when assigning a variable, ` <- ` is used for assignment operators and `=` is used for assigning arguments *within* a function.  
+* __Pro tip:__ `Alt` +  `-` (or `option` + `-` for mac) will insert ` <- `. While ` <- ` and `=` *technically* interchangable when assigning a variable, it is useful to use ` <- ` for assignment operators since `=` is used for assigning arguments *within* a function.  
 
 This data, like most data you will work with, does not have all of our information. For your own study system, you probably have (or need to make) a mapping file that details metadata for each site/ sample. In this case, we have information on the fire history of each site and the temperature of each site. Let's read in our metadata:
 ```
 meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
 ```
 
-Let's add our metadata to our data. Here we will assign a new variable using ` <- `. We will also use a pipe `%>%, which means "then do" in R. The code reads as follows take `data` then do a `left_join` with `meta` by the `Site` column. 
+Let's add our metadata to our data. Here we will assign a new variable using ` <- `. We will also use a pipe `%>%`, which means "then do" in R. The code reads as follows take `data` then do a `left_join` with `meta` by the `Site` column. 
 ```
 data.annotated <- data %>%
   left_join(meta, by = "Site")
 ```
 
 You might want to save this annotated data so that you have it handy in the future. We will export it here:
-
 ```
 write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 ```
@@ -86,7 +85,7 @@ To start plotting, we will use the simplest form of data (ie one gene only).
 geneA <- data.annotated %>%
   subset(Gene == "arsM")
 ```
-### Activity: what does this line of code say? 
+* __Activity 1:__ what does this line of code say? 
 
 ## Basic plotting with ggplot
 Let's talk a little about the grammar of graphics and how plotting is structured in the `ggplot2` package.
@@ -96,14 +95,14 @@ Now that we know what to expect, let's plot stuff! The `ggplot` command is used 
 ggplot(geneA)
 ```
 
-_What do you see?_
+* __Checkpoint:__ _What do you see?_
 
 Looks like we need to add some aesthetics using `aes`. To start, we will use `Fire_history` as our x-value and `Normalized.abundance` for our y-value
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance))
 ```
-_What type of data is this?_
-_What's missing here?_
+
+* __Checkpoint:__ _What type of data is this? What's missing here?_
 
 ## Adding Geometric layers
 Geometric layers are added with functions that have a `geom_` prefix. Let's try adding points to our plot:
@@ -111,30 +110,32 @@ Geometric layers are added with functions that have a `geom_` prefix. Let's try 
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_point() 
 ```
-* Note: it seems like a `%>%` would be appropriate to use here, but unfortunately, `ggplot` was created before the pipe existed. To layer in `ggplot`, you *must* use `+`
+* __Pro tip:__ it seems like a `%>%` would be appropriate to use here, but unfortunately, `ggplot` was created before the pipe existed. To layer in `ggplot`, you *must* use `+`
 
-_What's a better way of looking at this data?_
+* __Checkpoint:__ _What's a better way of looking at this data?_
 
-### Activity: Let's try a boxplot instead of a point.
+***
+
+### Activity 2: Let's try a boxplot instead of a point.
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 
-_How do we add points to this plot? How can we control what is the top layer?_
+### Checkpoint: _How do we add points to this plot? How can we control what is the top layer?_
 
-This plot is still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
+This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
-* Pro tip: When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
-### Activity: Make a boxplot with jittered points that are larger and colored
+* __Pro tip:__ When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
 
-_How would we know what our options are within a function?_
-_Why is the color in quotes?_
+* __Activity 3:__ Make a boxplot with jittered points that are larger and colored
+
+* __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
 ## Aesthetic layers
 We are already a little familiar with aesthetics since we used `aes` to designate our x and y values. Based on this, _can you guess when it is appropriate to use `aes`?
 
-### Activity: let's add color to the plot based on the temperature of a site. 
+* __Activity 4:__ let's add color to the plot based on the temperature of a site. 
 
-_Where is the best place to designate color?_
+* __Checkpoint:__ _Where is the best place to designate color? Why?_
 
 ## Scale layers
 Our plot is looking good! Let's control the temperature color so that it's easier to see. For this we would use `scale_color_continuous` 
@@ -146,14 +147,16 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   scale_color_continuous(low = "yellow", high = "red")
 ```
 
-_What scale would we use if we did not have continuous data?_  
-_How could we explore different scales?_
+* __Checkpoint:__ _What scale would we use if we did not have continuous data?_  
+* __Pro tip :__ You can explore different options by hitting the tab key. For example, to explore different `scale` functions, type `scale` and hit `tab`. An options list should come up. 
+* __Pro tip:__ You can do this within a function as well! For example, `scale_color_continuous(` and `tab` will bring up options such as `low` and `high`, which we used in this function!
+* __Pro tip:__ To find full information on a function, use a `?`. For example `?scale_color_continuous`. To search for packages, use `??` instead. 
 
 ## Coordinate layers
 As the name implies, coordinate layers impact the *coordinates* of a plot. 
 
-### Activity: flip the x and y coordinates
-* Pro tip: It is recomended to flip coordinates when labels for your x values are long and difficult to read
+* __Activity 5:__ flip the x and y coordinates
+* __Pro tip:__ It is recomended to flip coordinates when labels for your x values are long and difficult to read
 
 ##Facet layers
 As microbial ecologists, you probably are working with more than one gene (or taxonomic group or organism) at a time. This makes faceting very useful. The word facet literally means side or plane. Thus, faceting in R will will separate your plot into multiple panels to show the different sides/ planes of your data. To explore faceting, let's go back to our full dataset `data.annotated`. As you might expect, facet functions begin with the prefix `facet_`. 
@@ -166,16 +169,16 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   facet_wrap(~Gene)
 ```
 
-* Pro tip: the `~` in R essentially translates to "by". The above line reads "facet_wrap by column Gene"
+* __Pro tip:__ the `~` in R essentially translates to "by". The above line reads "facet_wrap by column Gene"
+* __Checkpoint:__ _How can we improve this plot? Are we missing/distorting any of our data?_
+* __Checkpoint:__ _How could we look at options for faceting?_
 
-_How can we improve this plot? Are we missing/distorting any of our data?_
-_How could we look at options for faceting?_
 
 ## Theme layers
-With an additional line of code, you can easily change the "ambience" of your plot. You guessed it: theme functions have the prefix `theme`
+With an additional line of code, you can easily change the "ambience" or theme of your plot. Theme functions have the prefix `theme`.
 
-### Activity: change the theme of your plot
-### Activity 2: install and load ggthemes and explore even *more* themes. 
+* __Activity 6:__ change the theme of your plot
+* __Activity 6.5 (optional):__ install and load `ggthemes` and explore even *more* themes!
 
 Another function `theme` can be used to make your own theme OR adjust an existing theme. Let's use `theme` to adjust our x-axis for readability
 
@@ -205,10 +208,13 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   labs(color = "Temperature (°C)") 
 ```
 
+* __Checkpoint__: _What if we wanted to change a shape label?_
+
 ## Saving a plot
 Now that you have a beautiful plot, you'll probably want to save it! R makes this very easy with function `ggsave`.
 
 First, we need to save our plot as an object. Based on our object assignment earlier, _how do we save the plot in our R environment?_
+
 ```
 boxplot <- ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
@@ -221,14 +227,14 @@ boxplot <- ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance
   xlab("Fire history") +
   labs(color = "Temperature (°C)")
 ```
-Pro tip: Saving a plot as an object can be frustrating since the plot saves without opening. If you put `(` `)` around the code, the plot will both save *and* print!
+* __Pro tip:__ Saving a plot as an object can be frustrating since the plot saves without opening. If you put `(` `)` around the code, the plot will both save *and* print!
 
 Now let's save our `boxplot` to our computer:
 ```
 ggsave(boxplot, filename = "figures/gene.boxplot.eps", units = "in", width = 6, height = 4)
 ```
 The above code reads save boxplot as an `.eps` file called `gene.boxplot.eps` in the folder `figures`, and make this file 6 inches wide and 4 inches tall. 
-Pro tip: `ggsave` will make the file based on the extension you give it. For example, saving as `gene.boxplot.png` saves a `.png` file
+* __Pro tip:__ `ggsave` will make the file based on the extension you give it. For example, saving as `gene.boxplot.png` saves a `.png` file
 
 ## Example 2: bar charts
 Using the same data, let's make some bar charts. When using bar charts, we need to consider mapping parameters such as what statistic or `stat` to use. `geom_bar` defaults to stat count, which means it will count the number of instances a particular x value occurs. We can visualize this with our tiny dataset:
@@ -236,13 +242,14 @@ Using the same data, let's make some bar charts. When using bar charts, we need 
 ggplot(geneA, aes(x = Fire_history)) +
   geom_bar() 
 ```
+
 The plot should show that we have 7 fire affected sites, 5 recovered sites, and one reference site. Be careful with `geom_bar`... look what happens if we used this same code on the full dataset:
 ```
 ggplot(data.annotated, aes(x = Fire_history)) +
   geom_bar() 
 ```
 
-_Do we actually have > 60 fire affected sites? Why does it look like this?_
+* __Checkpoint:__ _Do we actually have > 60 fire affected sites? Why does it look like this?_
 
 Hint: try the following code
 ```
@@ -263,40 +270,92 @@ ggplot(geneA, aes(x = Fire_history)) +
   geom_bar(fill = "black")
 ```
 
-Pro tip: either `color` or `fill` can be used to color points.
+* __Pro tip:__ either `color` or `fill` can be used to color points.
 
 It's often useful to use color to highlight separation of different colors of a bar chart. Let's look at all of our genes in a site
 ```
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black", aes(fill = Gene)) 
 ```
-_Why is `color` outside of `aes` here? Why is `fill` inside `aes`?_
+* __Checkpoint:__ _Why is `color` outside of `aes` here? Why is `fill` inside `aes`?_
 
 In addition to `stat` mappings, `geom_bar` also offers `position` mapping. The default is `position = "stack"`.
-Try `position = "dodge"`
+
 ```
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", position = "dodge", aes(fill = Gene)) 
+  geom_bar(stat = "identity", color = "black", position = "stack", aes(fill = Gene)) 
 ```
 
-Now try `position = "fill"`
-```
-ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
-  geom_bar(stat = "identity", color = "black", position = "fill", aes(fill = Gene)) 
+* __Checkpoint__ _What is the difference between "dodge" and "fill" with position mapping?_
+  * Try `position = "dodge"`
+  * Now try `position = "fill"` 
 
-``` 
+* __Activity 7:__ Make a pie chart of all of our genes within one sample
+  * Hint 1: You can subset your data within ggplot!
+  * Hint 2: What layer do we use to change coordinates?
 
- _What is the difference between "dodge" and "fill"?_
+## Challenge #1
+Using the same data, make this graph:
 
-Activity: Make a pie chart of all of our genes within one sample
-* Hint 1: You can subset your data within ggplot!
-* Hint 2: What layer do we use to change coordinates?
-
-## Exercise #2: continous x-axis
+## Challenge #2
 Using the same data, make this graph:
 
 ## Answer key
-Activity X
+* Activity 1: Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
+
+* Activity 2
+```
+ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() 
+```
+
+* Activity 3
+```
+ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, color = "red", width = 0.2) 
+```
+
+* Activity 4
+```
+ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) 
+```
+
+* Activity 5
+```
+ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  scale_color_continuous(low = "yellow", high = "red") +
+  coord_flip()
+```
+
+* Activity 6
+```
+ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  scale_color_continuous(low = "yellow", high = "red") +
+  facet_wrap(~Gene, scales = "free_y") +
+  theme_bw()
+```
+
+* Activity 6.5
+```
+install.packages("ggthemes")
+library(ggthemes)
+
+ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  scale_color_continuous(low = "yellow", high = "red") +
+  facet_wrap(~Gene, scales = "free_y") +
+  theme_wsj()
+```
+
+* Activity 7
 ```
 ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black",  aes(fill = Gene), width = 1) +
@@ -305,7 +364,7 @@ ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abu
   theme(axis.text.x=element_blank())
 ```
 
-Challenge
+Challenge 1
 ```
 ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
   geom_smooth(method = "lm", linetype = "dashed", color = "black") +
@@ -314,4 +373,14 @@ ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
   theme_bw(base_size = 10) +
   xlab("Temperature (°C)") +
   ylab("Normalized abundance")
+```
+
+Challenge 2
+```
+ggplot(data.annotated, aes(x = Site, y = Gene)) +
+  geom_point(aes(size = Normalized.abundance, color = Temperature)) +
+  geom_point(aes(size = Normalized.abundance), shape = 1, color = "black") +
+  scale_color_continuous(low = "yellow", high = "red") +
+  theme_bw() +
+  coord_flip()
 ```
