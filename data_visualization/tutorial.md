@@ -67,6 +67,7 @@ meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
 
 ### Annotating your data
 Let's add our metadata to our data. Here we will assign a new variable using ` <- `. We will also use a pipe `%>%`, which means "then do" in R. The code reads as follows take `data` then do a `left_join` with `meta` by the `Site` column. 
+
 ```
 data.annotated <- data %>%
   left_join(meta, by = "Site")
@@ -74,6 +75,7 @@ data.annotated <- data %>%
 
 ### Saving a table
 You might want to save this annotated data so that you have it handy in the future. We will export it here:
+
 ```
 write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 ```
@@ -90,12 +92,14 @@ To start plotting, we will use the simplest form of data (ie one gene only).
 geneA <- data.annotated %>%
   subset(Gene == "arsM")
 ```
+
 * __Activity 1:__ what does this line of code say? 
 
 ## Basic plotting with ggplot
 Let's talk a little about the grammar of graphics and how plotting is structured in the `ggplot2` package.
 
 Now that we know what to expect, let's plot stuff! The `ggplot` command is used to plot graphs in R... let's try it with our tiny dataset `geneA`:
+
 ```
 ggplot(geneA)
 ```
@@ -103,6 +107,7 @@ ggplot(geneA)
 * __Checkpoint:__ _What do you see?_
 
 Looks like we need to add some aesthetics using `aes`. To start, we will use `Fire_history` as our x-value and `Normalized.abundance` for our y-value
+
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance))
 ```
@@ -111,33 +116,28 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance))
 
 ## Adding Geometric layers
 Geometric layers are added with functions that have a `geom_` prefix. Let's try adding points to our plot:
+
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_point() 
 ```
 * __Pro tip:__ it seems like a `%>%` would be appropriate to use here, but unfortunately, `ggplot` was created before the pipe existed. To layer in `ggplot`, you *must* use `+`
-
 * __Checkpoint:__ _What's a better way of looking at this data?_
-
 * __Activity 2:__ Let's try a boxplot instead of a point.
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
-
 * __Checkpoint:__ _How do we add points to this plot? How can we control what is the top layer?_
 
 This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
 * __Pro tip:__ When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
-
 * __Activity 3:__ Make a boxplot with jittered points that are larger and colored
-
 * __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
 ## Aesthetic layers
 We are already a little familiar with aesthetics since we used `aes` to designate our x and y values. Based on this, _can you guess when it is appropriate to use `aes`?
 
 * __Activity 4:__ let's add color to the plot based on the temperature of a site. 
-
 * __Checkpoint:__ _Where is the best place to designate color? Why?_
 
 ## Scale layers
