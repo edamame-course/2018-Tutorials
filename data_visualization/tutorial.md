@@ -69,9 +69,11 @@ data.annotated <- data %>%
 ```
 
 You might want to save this annotated data so that you have it handy in the future. We will export it here:
+
 ```
 write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 ```
+
 * We have exported it to our output folder for organizational purposes
 * You can call the file whatever you want. We recomend using a useful file extension. For tab delimited file, `.txt` or `.tsv` is appropriate; for a comma separated file, `.csv` is appropriate
 * You can specify your own separation with `sep = `
@@ -84,7 +86,7 @@ To start plotting, we will use the simplest form of data (ie one gene only).
 geneA <- data.annotated %>%
   subset(Gene == "arsM")
 ```
-* Activity: what does this line of code say? 
+### Activity: what does this line of code say? 
 
 ## Basic plotting with ggplot
 Let's talk a little about the grammar of graphics and how plotting is structured in the `ggplot2` package.
@@ -113,7 +115,7 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 
 _What's a better way of looking at this data?_
 
-Activity: Let's try a boxplot instead of a point.
+### Activity: Let's try a boxplot instead of a point.
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 
@@ -122,7 +124,7 @@ _How do we add points to this plot? How can we control what is the top layer?_
 This plot is still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
 * Pro tip: When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
-* Activity: Make a boxplot with jittered points that are larger and colored
+### Activity: Make a boxplot with jittered points that are larger and colored
 
 _How would we know what our options are within a function?_
 _Why is the color in quotes?_
@@ -130,7 +132,7 @@ _Why is the color in quotes?_
 ## Aesthetic layers
 We are already a little familiar with aesthetics since we used `aes` to designate our x and y values. Based on this, _can you guess when it is appropriate to use `aes`?
 
-Activity: let's add color to the plot based on the temperature of a site. 
+### Activity: let's add color to the plot based on the temperature of a site. 
 
 _Where is the best place to designate color?_
 
@@ -150,7 +152,7 @@ _How could we explore different scales?_
 ## Coordinate layers
 As the name implies, coordinate layers impact the *coordinates* of a plot. 
 
-* Activity: flip the x and y coordinates
+### Activity: flip the x and y coordinates
 * Pro tip: It is recomended to flip coordinates when labels for your x values are long and difficult to read
 
 ##Facet layers
@@ -172,8 +174,8 @@ _How could we look at options for faceting?_
 ## Theme layers
 With an additional line of code, you can easily change the "ambience" of your plot. You guessed it: theme functions have the prefix `theme`
 
-Activity: change the theme of your plot
-Activity 2: install and load ggthemes and explore even *more* themes. 
+### Activity: change the theme of your plot
+### Activity 2: install and load ggthemes and explore even *more* themes. 
 
 Another function `theme` can be used to make your own theme OR adjust an existing theme. Let's use `theme` to adjust our x-axis for readability
 
@@ -293,7 +295,7 @@ Activity: Make a pie chart of all of our genes within one sample
 ## Exercise #2: continous x-axis
 Using the same data, make this graph:
 
-## Key
+## Answer key
 Activity X
 ```
 ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance)) +
