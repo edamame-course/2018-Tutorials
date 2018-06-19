@@ -1,0 +1,14 @@
+Site	Temperature	Fire_history
+Cen01	14.1	recovered
+Cen03	14.7	recovered
+Cen04	13.3	recovered
+Cen05	14.0	recovered
+Cen06	24.1	fire affected
+Cen07	13.5	recovered
+Cen10	54.2	fire affected
+Cen12	32.0	fire affected
+Cen13	57.4	fire affected
+Cen14	34.1	fire affected
+Cen15	38.9	fire affected
+Cen16	21.7	fire affected
+Cen17	12.1	reference
