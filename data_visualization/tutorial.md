@@ -345,6 +345,8 @@ Using the same data, make this graph:
 ### Activity 1
 Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
 
+***
+
 ### Activity 2
 Change the `geom` applied to the plot. Since we want to visualize a boxplot, we will use `geom_boxplot()` instead of `geom_point()`.
 
@@ -352,6 +354,8 @@ Change the `geom` applied to the plot. Since we want to visualize a boxplot, we 
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() 
 ```
+
+***
 
 ### Activity 3
 To add points on top of a boxplot, you should add a line with `geom_boxplot` _first_. Next add a line for `geom_point()`. In this case, we want our points to be a bit spread out, so we will use `geom_jitter()` instead. To enlarge the points, we will set `size = 3`; to add red color to the point, use the argument `color = "red"`; to adjust the width of the jitter, use `width = 0.2`. Numbers do not need quotes, but since colors are "outside of R", we use `""`.
@@ -370,6 +374,8 @@ ggplot(geneA, color = "red", aes(x = Fire_history, y = Normalized.abundance)) +
   geom_jitter(size = 3, width = 0.2) 
 ```
 
+***
+
 ### Activity 4
 Here we want to add color that is based on _our_ data, not an arbitrarily (like `"red"`). To achieve this, simlpy put the color argument *within* an aesthetics (`aes`) argument. 
 ```
@@ -377,6 +383,8 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
   geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) 
 ```
+
+***
 
 ### Activity 5
 To control coordinates, we use `coord` functions. As the name implies, adding layer `coord_flip()` will flip your coordinates. 
@@ -389,6 +397,8 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   coord_flip()
 ```
 
+***
+
 ### Activity 6
 Explore theme layers by typing `theme` + `tab` and select any theme you want! See below for an example using `theme_bw()`.
 
@@ -400,6 +410,8 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw()
 ```
+
+***
 
 ### Activity 6.5
 Explore even more themes! More themes are included in package `ggthemes`. Install and load this package before exploring. See below for an example with a theme based on the Wall Street Journal:
@@ -415,6 +427,8 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   facet_wrap(~Gene, scales = "free_y") +
   theme_wsj()
 ```
+
+***
 
 ### Activity 7
 Subset your data first to include only one site. This can be done one of two ways:
@@ -441,6 +455,8 @@ ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abu
   theme(axis.text.x=element_blank())
 ```
 
+***
+
 ### Challenge 1
 ```
 ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
@@ -451,6 +467,8 @@ ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
   xlab("Temperature (°C)") +
   ylab("Normalized abundance")
 ```
+
+***
 
 ### Challenge 2
 ```
