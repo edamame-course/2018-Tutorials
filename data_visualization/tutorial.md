@@ -103,14 +103,14 @@ Now that we know what to expect, let's plot stuff! The `ggplot` command is used 
 ```
 ggplot(geneA)
 ```
-![simple plot](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot.png" width="600">
 
 Looks like we need to add some aesthetics using `aes`. To start, we will use `Fire_history` as our x-value and `Normalized.abundance` for our y-value
 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance))
 ```
-![xy plot](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot_xy.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot_xy.png" width="600">
 
 * __Checkpoint:__ _What type of data is this? What's missing here?_
 
@@ -121,25 +121,25 @@ Geometric layers are added with functions that have a `geom_` prefix. Let's try 
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_point() 
 ```
-![geom_point](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_points.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_points.png" width="600">
 
 * __Pro tip:__ it seems like a `%>%` would be appropriate to use here, but unfortunately, `ggplot` was created before the pipe existed. To layer in `ggplot`, you *must* use `+`
 * __Checkpoint:__ _What's a better way of looking at this data?_
 * __Activity 2:__ Let's try a boxplot instead of a point.
 
-![boxplot](https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_boxplot.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_boxplot.png" width="600">
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 * __Checkpoint:__ _How do we add points to this plot? How can we control what is the top layer?_
 
-![boxplotpoint](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_point.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_point.png" width="600">
 
 This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
 * __Pro tip:__ When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
 * __Activity 3:__ Make a boxplot with jittered points that are larger and colored
 
-![boxplot_jitter](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_better.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_better.png" width="600">
 
 * __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
@@ -148,7 +148,7 @@ We are already a little familiar with aesthetics since we used `aes` to designat
 
 * __Activity 4:__ let's add color to the plot based on the temperature of a site.
 
-![boxplot_jitter_temp](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp.png" width="600">
 
 * __Checkpoint:__ _Where is the best place to designate color? Why?_
 
@@ -159,11 +159,12 @@ Our plot is looking good! Let's control the temperature color so that it's easie
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red")
 ```
 
-![boxplot_jitter_temp_better](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_better.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_better.png" width="600">
+
 
 * __Checkpoint:__ _What scale would we use if we did not have continuous data?_  
 * __Pro tip :__ You can explore different options by hitting the tab key. For example, to explore different `scale` functions, type `scale` and hit `tab`. An options list should come up. 
@@ -176,7 +177,7 @@ As the name implies, coordinate layers impact the *coordinates* of a plot.
 * __Pro tip:__ It is recomended to flip coordinates when labels for your x values are long and difficult to read
 * __Activity 5:__ flip the x and y coordinates
 
-![boxplot_jitter_temp_flip](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_flip.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_flip.png" width="600">
 
 
 ## Facet layers
@@ -185,17 +186,17 @@ As microbial ecologists, you probably are working with more than one gene (or ta
 ```
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene)
 ```
-![boxplot_facet](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_fixed.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_fixed.png" width="600">
 
 * __Pro tip:__ the `~` in R essentially translates to "by". The above line reads "facet_wrap by column Gene"
 * __Checkpoint:__ _How can we improve this plot? Are we missing/distorting any of our data?_
 * __Checkpoint:__ _How could we look at options for faceting?_
 
-![boxplot_facet_free](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_free.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_free.png" width="600">
 
 ## Theme layers
 With an additional line of code, you can easily change the "ambience" or theme of your plot. Theme functions have the prefix `theme`.
@@ -208,13 +209,13 @@ Another function `theme` can be used to make your own theme OR adjust an existin
 ```
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw(base_size = 12) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1))
 ```
-![boxplot_theme](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_bw_angle.png)
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_bw_angle.png" width="600">
 
 
 
@@ -224,7 +225,7 @@ It can be annoying to have spaces within data in R. We get around this by using 
 ``` 
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw(base_size = 10) +
@@ -310,7 +311,7 @@ It's often useful to use color to highlight separation of different colors of a 
 ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black", aes(fill = Gene)) 
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/stacked_bar_fill.png" width="400">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/stacked_bar_fill.png" width="600">
 
 * __Checkpoint:__ _Why is `color` outside of `aes` here? Why is `fill` inside `aes`?_
 
@@ -329,15 +330,22 @@ ggplot(data.annotated, aes(x = Site, y = Normalized.abundance)) +
   * Hint 1: You can subset your data within ggplot!
   * Hint 2: What layer do we use to change coordinates?
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/pie.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/pie.png" width="500">
 
 
 ## Challenge #1
 Using the same data, make this graph:
+<space/>
+<space/>
+
+
 <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge1.png" width="600">
 
 ## Challenge #2
 Using the same data, make this graph:
+<space/>
+<space/>
+
 <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/challenge2.png" width="600">
 
 
@@ -358,12 +366,12 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 ***
 
 ### Activity 3
-To add points on top of a boxplot, you should add a line with `geom_boxplot` _first_. Next add a line for `geom_point()`. In this case, we want our points to be a bit spread out, so we will use `geom_jitter()` instead. To enlarge the points, we will set `size = 3`; to add red color to the point, use the argument `color = "red"`; to adjust the width of the jitter, use `width = 0.2`. Numbers do not need quotes, but since colors are "outside of R", we use `""`.
+To add points on top of a boxplot, you should add a line with `geom_boxplot` _first_. Next add a line for `geom_point()`. In this case, we want our points to be a bit spread out, so we will use `geom_jitter()` instead. To enlarge the points, we will set `size = 2`; to add red color to the point, use the argument `color = "red"`; to adjust the width of the jitter, use `width = 0.2`. Numbers do not need quotes, but since colors are "outside of R", we use `""`.
 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, color = "red", width = 0.2) 
+  geom_jitter(size = 2, color = "red", width = 0.2) 
 ```
 
 __Note:__ as is, the code only changes the color of the points. If you wanted both the points and the boxplot to be red, you could set the color in the `ggplot` umberella. For example: 
@@ -371,7 +379,7 @@ __Note:__ as is, the code only changes the color of the points. If you wanted bo
 ```
 ggplot(geneA, color = "red", aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2) 
+  geom_jitter(size = 2, width = 0.2) 
 ```
 
 ***
@@ -381,7 +389,7 @@ Here we want to add color that is based on _our_ data, not an arbitrarily (like 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) 
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) 
 ```
 
 ***
@@ -392,7 +400,7 @@ To control coordinates, we use `coord` functions. As the name implies, adding la
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   coord_flip()
 ```
@@ -405,7 +413,7 @@ Explore theme layers by typing `theme` + `tab` and select any theme you want! Se
 ```
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw()
@@ -422,7 +430,7 @@ library(ggthemes)
 
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
-  geom_jitter(size = 3, width = 0.2, aes(color = Temperature)) +
+  geom_jitter(size = 2, width = 0.2, aes(color = Temperature)) +
   scale_color_continuous(low = "yellow", high = "red") +
   facet_wrap(~Gene, scales = "free_y") +
   theme_wsj()
@@ -461,7 +469,7 @@ ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abu
 ```
 ggplot(data.annotated, aes(x = Temperature, y = Normalized.abundance)) +
   geom_smooth(method = "lm", linetype = "dashed", color = "black") +
-  geom_point(size = 3, aes(shape = Fire_history, color = Gene)) +
+  geom_point(size = 2, aes(shape = Fire_history, color = Gene)) +
   facet_wrap(~Gene, scales = "free_y") +
   theme_bw(base_size = 10) +
   xlab("Temperature (°C)") +
