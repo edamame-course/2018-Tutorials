@@ -138,9 +138,10 @@ This plot still does not highlight all of our information. The points are too sm
 
 * __Pro tip:__ When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
 * __Activity 3:__ Make a boxplot with jittered points that are larger and colored
-* __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
 ![boxplot_jitter](https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_better.png)
+
+* __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
 ## Aesthetic layers
 We are already a little familiar with aesthetics since we used `aes` to designate our x and y values. Based on this, _can you guess when it is appropriate to use `aes`?
@@ -345,19 +346,32 @@ Using the same data, make this graph:
 Take `data.annotated` then `subset` so that column `Gene` only includes "arsM"  
 
 ### Activity 2
+Change the `geom` applied to the plot. Since we want to visualize a boxplot, we will use `geom_boxplot()` instead of `geom_point()`.
+
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() 
 ```
 
 ### Activity 3
+To add points on top of a boxplot, you should add a line with `geom_boxplot` _first_. Next add a line for `geom_point()`. In this case, we want our points to be a bit spread out, so we will use `geom_jitter()` instead. To enlarge the points, we will set `size = 3`; to add red color to the point, use the argument `color = "red"`; to adjust the width of the jitter, use `width = 0.2`. Numbers do not need quotes, but since colors are "outside of R", we use `""`.
+
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
   geom_jitter(size = 3, color = "red", width = 0.2) 
 ```
 
+__Note:__ as is, the code only changes the color of the points. If you wanted both the points and the boxplot to be red, you could set the color in the `ggplot` umberella. For example: 
+
+```
+ggplot(geneA, color = "red", aes(x = Fire_history, y = Normalized.abundance)) +
+  geom_boxplot() +
+  geom_jitter(size = 3, width = 0.2) 
+```
+
 ### Activity 4
+Here we want to add color that is based on _our_ data, not an arbitrarily (like `"red"`). To achieve this, simlpy put the color argument *within* an aesthetics (`aes`) argument. 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
@@ -365,6 +379,8 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 ```
 
 ### Activity 5
+To control coordinates, we use `coord` functions. As the name implies, adding layer `coord_flip()` will flip your coordinates. 
+
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
@@ -374,6 +390,8 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 ```
 
 ### Activity 6
+Explore theme layers by typing `theme` + `tab` and select any theme you want! See below for an example using `theme_bw()`.
+
 ```
 ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_boxplot() +
@@ -384,6 +402,8 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
 ```
 
 ### Activity 6.5
+Explore even more themes! More themes are included in package `ggthemes`. Install and load this package before exploring. See below for an example with a theme based on the Wall Street Journal:
+
 ```
 install.packages("ggthemes")
 library(ggthemes)
@@ -397,6 +417,22 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
 ```
 
 ### Activity 7
+Subset your data first to include only one site. This can be done one of two ways:
+option1:
+```
+ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance))
+```
+
+option2:
+```
+data.annotated %>%
+subset(Site == "Cen01") %>%
+ggplot(aes(x = Site, y = Normalized.abundance))
+```
+
+
+Converting a bar chart to a pie chart changes the plot coordinates, so we use a `coord` function (`coord_polar`). For additional aesthetics, you can simplify the theme by adding a `theme_void()` layer and removing the x-axis text with `theme(axis.text.x=element_blank())`. 
+
 ```
 ggplot(subset(data.annotated, Site == "Cen01"), aes(x = Site, y = Normalized.abundance)) +
   geom_bar(stat = "identity", color = "black",  aes(fill = Gene), width = 1) +
