@@ -17,7 +17,7 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
 * Saving publication-ready plots
 
 ## Required tools
-* [R](https://cran.r-project.org/mirrors.html)
+* [R](https://cloud.r-project.org/)
 * [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
 
 ## Helpful resources
