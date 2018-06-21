@@ -12,7 +12,7 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
 ## Learning Objectives
 * Become familiar with RStudio
 * Best practives for data organization
-* Understand grammar of graphics
+* Understand [grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf)
 * Visualizing different types of data in R
 * Saving publication-ready plots
 
