@@ -28,26 +28,12 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
 * [2017 EDAMAME tutorials](http://germslab.org/datavisualization/index.html)
 * [Complete ggplot2 tutorial](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html)
 
-## Installing and loading packages
-ggplot is not part of “base R”; rather it is a package – a library of functions that an R user wrote. This extensibility is part of the beauty of R. As of December 2016, there are 9,600 such packages in the official Comprehensive R Archive Network, better known as CRAN.
+## Before you begin
+Make sure you go through the [Intro R](https://github.com/edamame-course/2018-Tutorials/edit/master/Intro_R_RStudio/R_tutorial.md) tutorial! 
 
-ggplot is one of the most popular packages for R. It is part of a suite of R tools that make up “The Tidyverse”. Its author conveniently bundled these tools together in a super-package called tidyverse. To use the tidyverse tools, you first need to download them to your machine (once) and then load them (each R session you want to use them). To install tidyverse use the `install.packages` function: 
+If you really want to skip that tutorial, you will still need to load the tidyverse.
+`library(tidyverse)`
 
-```
-install.packages("tidyverse")
-```
-
-Whenever you want to use a package, you have to load it in your R session. For that, use the library function:
-
-```
-library(tidyverse)
-```
-
-Notice how we did not use quotes this time. This is because "" in R refer to things outside of R. Before installing, tidyverse was outside of R. Once installed, R "knows about" tidyverse, so quotes are no longer needed. 
-
-* __Pro tip:__ It is a good idea to load all required packages at the beginning of an R script. This helps people who are using your code know what they need to load/ install. 
-
- 
 ## Reading in/ tidying data
 For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned this repository, you should have the data file in your `data` folder (`gene_abundance_centralia.txt`). It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
 
