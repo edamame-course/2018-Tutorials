@@ -112,17 +112,21 @@ Installing R/ RStudio does not automatically give you all R packages, only a few
 
 Let's try it by installing a common package: `tidyverse`. This package is unique in that its author bundled *many* tools together (`ggplot2`,`dplyr`,`readr`, and more!) in a super-package called tidyverse.
 ```
-`install.packages("tidyverse")
+install.packages("tidyverse")
 ```
 
-Whenever you want to use a package, you have to load it in your R session. For that, use the library function:
+Congratulations! With one line of code, you have installed *many* useful R packages, but you are not ready to use these packages quite yet. Whenever you want to use a package, you have to load it in your R session. For that, use the `library()` function:
 ```
 library(tidyverse)
 ```
+Now `tidyverse` is loaded and ready for use!
 
-Notice how we did not use quotes this time. This is because "" in R refer to things outside of R. Before installing, tidyverse was outside of R. Once installed, R "knows about" tidyverse, so quotes are no longer needed. 
+Notice how we did not use quotes this time. This is because `""` in R typically refer to things outside of R. Before installing, tidyverse was outside of R. Once installed, R "knows about" tidyverse, so quotes are no longer needed. 
 
 ***
-__Pro tip:__ It is a good idea to load all required packages at the beginning of an R script. This helps people who are using your code know what they need to load/ install. 
+__Pro tip:__ It is a good idea to load all required packages at the beginning of an `.R` script. This helps people who are using your code know what they need to load/ install. 
 ***
+
+## Using R: Packages
+
 
