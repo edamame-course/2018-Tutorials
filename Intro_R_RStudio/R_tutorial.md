@@ -39,6 +39,7 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
   * [r-bloggers.com](www.r-bloggers.com)
   * twitter: [@hadleywickham](@hadleywickham) [@rstudiotips](@rstudiotips)
   * [support.rstudio.com](https://support.rstudio.com/hc/en-us)
+ 
 
 ## RStudio: an interactive development environment for R
 See below for an example of what RStudio looks like. 
@@ -76,5 +77,52 @@ If you run code from a script, it will show in the console!
 __Pro tip:__ There are tons of useful keyboard shortcuts in addition to `ctrl/cmd` + `enter`. Here is an [R support page](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) with default shortcuts.
 ***
 
+## Organization in RStudio: Projects
+R projects are *amazing*! Projects are a special feature of RStudio that allow you to make a special home for all of the code, data, workspace, R history, and more for one project! 
 
+### Why use R Projects
+People often cite R projects as par of "best practices" for reproducible workflows. Here's why:
+
+* Automatically sets working directory to project directory
+  * this is especially useful for sharing code
+* Version control friendly
+  * If you're using GitHub for version control, projects automatically create a `.gitignore` file
+* Saves your R environment for a particular project
+  * This is useful when you are working on multiple projects at once (aka you're a scientist). You can work on one project in RStudio without mixing your R `Environment`
+* Run multiple RStudio's at once and literally work on two projects at the same time
+
+
+### Creating an R Project
+Creating an R Project will result in a `.Rproj` file that is by default named after the directory it is in.
+
+* To create a new R project, select `File -> New Project`, and a page like this should come up
+INSERT IMAGE!
+* Here you can make a new directory for a project, use an existing directory you've been workin in, or even a version controlled directory (think GitHub)
+
+### More information
+Can't get enough of R projects? Great! We'll use one in our [data visualization](https://github.com/edamame-course/2018-Tutorials/blob/master/data_visualization/data_visualization_tutorial.md) tutorial. Also check out [RStudio support](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) for even more information on R Projects!
+
+## Using R: Packages
+An R package is a bungle of R functions, data, and code that R users can install and use in their own work.  
+
+One of the reasons R is widely used in *many* fields is the existence of R packages. There are over 10,000! See below for a graph from Gergely Daróczi showing the number of packages over time. 
+IMAGE
+
+Installing R/ RStudio does not automatically give you all R packages, only a few that are considered part of "base R." In fact, it is likely that you will never use most R packages since many are field specific. Instead, you need to install any package you are interested in using. Installing packages requires the function `install.packages()`.
+
+Let's try it by installing a common package: `tidyverse`. This package is unique in that its author bundled *many* tools together (`ggplot2`,`dplyr`,`readr`, and more!) in a super-package called tidyverse.
+```
+`install.packages("tidyverse")
+```
+
+Whenever you want to use a package, you have to load it in your R session. For that, use the library function:
+```
+library(tidyverse)
+```
+
+Notice how we did not use quotes this time. This is because "" in R refer to things outside of R. Before installing, tidyverse was outside of R. Once installed, R "knows about" tidyverse, so quotes are no longer needed. 
+
+***
+__Pro tip:__ It is a good idea to load all required packages at the beginning of an R script. This helps people who are using your code know what they need to load/ install. 
+***
 
