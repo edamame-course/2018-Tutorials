@@ -40,7 +40,7 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
   * twitter: [@hadleywickham](@hadleywickham) [@rstudiotips](@rstudiotips)
   * [support.rstudio.com](https://support.rstudio.com/hc/en-us)
  
-
+***
 ## RStudio: an interactive development environment for R
 See below for an example of what RStudio looks like. 
  <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/RStudio_diagram.jpg" width="600"> 
@@ -104,6 +104,12 @@ Creating an R Project will result in a `.Rproj` file that is by default named af
 ### More information
 Can't get enough of R projects? Great! We'll use one in our [data visualization](https://github.com/edamame-course/2018-Tutorials/blob/master/data_visualization/data_visualization_tutorial.md) tutorial. Also check out [RStudio support](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) for even more information on R Projects!
 
+***
+## The basics
+For a short tutorial on the basics of R (arithmetic, comparisons, variables) see last [year's tutorial](http://germslab.org/datavisualization/01-intro-r-rstudio.html).
+
+***
+
 ## Using R: Packages
 An R package is a bungle of R functions, data, and code that R users can install and use in their own work.  
 
@@ -129,6 +135,6 @@ Notice how we did not use quotes this time. This is because `""` in R typically 
 __Pro tip:__ It is a good idea to load all required packages at the beginning of an `.R` script. This helps people who are using your code know what they need to load/ install. 
 ***
 
-## Using R: Packages
+## Working with data in R
 
 
