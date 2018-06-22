@@ -165,6 +165,9 @@ Here, R assumes that your first argument is the file you are interested in. If y
 ```
 read.delim(file = "data/gene_abundance_centralia.txt")
 ```
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/read_df.png" width="400"> 
+
+
 ***
 __Pro tip:__ Rather than guessing what arguments within a funciton are called, simply hit `tab` after opening the function (`read.delim(`). A list of argument options will come up within RStudio, and you can tab-to-complete these as well! This will automatically insert spaces around the `=` to improve code readability with minimal effort on your part!
 ***
@@ -176,6 +179,7 @@ If we wanted to read in a tibble instead, we would use `read_delim()`. Tibbles a
 ```
 read_delim("data/gene_abundance_centralia.txt", delim = "\t")
 ```
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/read_tibble.png" width="400"> 
 
 Congratulations, R is reading your data!  
 * __Checkpoint:__ Why do these functions print out to the console?
@@ -212,8 +216,8 @@ We already know how to tell R to read our data, so all we need is a name and ` <
 ```
 data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
 ```
-
 No output lines printed in your console! Instead, you should now be able to see object `data` in your `environment`. 
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/data_in_env.png" width="400"> 
 
 ***
 __Pro tip:__ `Alt` +  `-` (or `option` + `-` for mac) will insert ` <- `. While ` <- ` and `=` *technically* interchangable when assigning a variable, it is useful to use ` <- ` for assignment operators since `=` is used for assigning arguments *within* a function.  
