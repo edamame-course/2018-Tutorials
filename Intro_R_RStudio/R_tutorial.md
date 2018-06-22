@@ -216,8 +216,11 @@ We already know how to tell R to read our data, so all we need is a name and ` <
 ```
 data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
 ```
-No output lines printed in your console! Instead, you should now be able to see object `data` in your `environment`. 
+<br/>
  <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/data_in_env.png" width="400"> 
+<br/>
+
+No output lines printed in your console! Instead, you should now be able to see object `data` in your `environment`. 
 
 ***
 __Pro tip:__ `Alt` +  `-` (or `option` + `-` for mac) will insert ` <- `. While ` <- ` and `=` *technically* interchangable when assigning a variable, it is useful to use ` <- ` for assignment operators since `=` is used for assigning arguments *within* a function.  
