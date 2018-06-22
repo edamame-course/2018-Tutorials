@@ -43,7 +43,7 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
 
 ## RStudio: an interactive development environment for R
 See below for an example of what RStudio looks like. 
-
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/RStudio_diagram.jpg" width="600"> 
 
 ### Workspace/history (upper right)
 This space might have 2 or more tabs which show different aspects of R
@@ -96,7 +96,9 @@ People often cite R projects as par of "best practices" for reproducible workflo
 Creating an R Project will result in a `.Rproj` file that is by default named after the directory it is in.
 
 * To create a new R project, select `File -> New Project`, and a page like this should come up
-INSERT IMAGE!
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/rproject.png" width="400"> 
+
+
 * Here you can make a new directory for a project, use an existing directory you've been workin in, or even a version controlled directory (think GitHub)
 
 ### More information
@@ -106,7 +108,7 @@ Can't get enough of R projects? Great! We'll use one in our [data visualization]
 An R package is a bungle of R functions, data, and code that R users can install and use in their own work.  
 
 One of the reasons R is widely used in *many* fields is the existence of R packages. There are over 10,000! See below for a graph from Gergely Daróczi showing the number of packages over time. 
-IMAGE
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/packages.png" width="400"> 
 
 Installing R/ RStudio does not automatically give you all R packages, only a few that are considered part of "base R." In fact, it is likely that you will never use most R packages since many are field specific. Instead, you need to install any package you are interested in using. Installing packages requires the function `install.packages()`.
 
