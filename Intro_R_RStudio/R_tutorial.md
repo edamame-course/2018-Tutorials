@@ -136,5 +136,15 @@ __Pro tip:__ It is a good idea to load all required packages at the beginning of
 ***
 
 ## Working with data in R
+R recognizes several types of data/information
+* Numeric
+* Logical
+* Character
+* Factor (a character with *levels*)
+
+These data types can be put into different data structures based on their dimensions and how many types of data they contain.
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/R_data_structures.png" width="400"> 
+
+Now that we can get around a little in R, let's play with some data! As microbial ecologists, you will often work with tables of data such as data frames/ tibbles, so we will explore these now.
 
 
