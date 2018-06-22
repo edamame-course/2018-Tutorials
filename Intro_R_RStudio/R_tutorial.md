@@ -135,7 +135,7 @@ Notice how we did not use quotes this time. This is because `""` in R typically 
 __Pro tip:__ It is a good idea to load all required packages at the beginning of an `.R` script. This helps people who are using your code know what they need to load/ install. 
 ***
 
-## Working with data in R
+## Data types and structure in R
 R recognizes several types of data/information
 * Numeric
 * Logical
@@ -147,5 +147,81 @@ These data types can be put into different data structures based on their dimens
  <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/R_data_structures.png" width="400"> 
 
 Now that we can get around a little in R, let's play with some data! As microbial ecologists, you will often work with tables of data such as data frames/ tibbles, so we will explore these now.
+
+***
+## Reading data into R
+In this section, we will focus on reading dataframes/ tibbles into R. In other words, we will read in some data that is multi-dimensional (has rows and columns) and contains different data types (has both numbers and characters). Reading data into R requires `read` functions. 
+
+For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned the `2018-tutorials` repository, you should have the data file on your computer. Navigate to `2018-tutorials/data_visualization/data` folder, and you should see a file `gene_abundance_centralia.txt`. It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
+
+# `read` functions
+First, we will read this file into R as a data.frame with the function `read.delim()`. The file is currently outside of R, so we will put it in quotes. 
+```
+read.delim("data/gene_abundance_centralia.txt")
+```
+
+Here, R assumes that your first argument is the file you are interested in. If you would like to be more specific, you could specify `file = ` within the code. 
+
+```
+read.delim(file = "data/gene_abundance_centralia.txt")
+```
+***
+__Pro tip:__ Rather than guessing what arguments within a funciton are called, simply hit `tab` after opening the function (`read.delim(`). A list of argument options will come up within RStudio, and you can tab-to-complete these as well! This will automatically insert spaces around the `=` to improve code readability with minimal effort on your part!
+***
+
+If we wanted to read in a tibble instead, we would use `read_delim()`. Tibbles a bit fussier than data.frames, but it's all in the name of reproducibility. `read_delim()` forces you to specify the delimiter of the file. In this case, it is tab delimited, so we will specify `delim = "\t"`.
+
+* __Checkpoint:__ What are *three* ways we could figure out that the argument is `delim = `?
+
+```
+read_delim("data/gene_abundance_centralia.txt", delim = "\t")
+```
+
+Congratulations, R is reading your data!  
+* __Checkpoint:__ Why do these functions print out to the console?
+
+Reading in other data.frames or tibbles is very similar, and there are often many functions that can read similar data structures.  
+* tab separated values
+  * `read.tsv()`: reads files as tab separated values into a data.frame
+  * `read.delim(sep = "\t")`: reads files as tab separated values into a data.frame
+  * `read_delim(delim = "\t")`: reads files as tab separated values into a tibble
+* comma separated values
+  * `read.csv()`: reads files as comma separated values into a data.frame
+  * `read.delim(sep = ",")`: reads files as comma separated values into a data.frame
+  * `read_csv()`: reads files as comma separated values into a tibble
+  * `read_delim(delim = ",")`: reads files as comma separated values into a tibble
+* space separated values
+  * `read.table(sep = " ")`: reads files as space separated values into a data.frame
+  * `read_delim(delim = " ")`: reads files as space separated values into a tibble
+  
+* __Checkpoint:__ What differences can you see between tibbles and data.frames? 
+* See [here](http://r4ds.had.co.nz/introduction-2.html) fore more information on the differences between tibbles and data.frames
+
+# Saving objects to your R environment
+It's great to see that R is recognizing our data, but if we want to actually work with the data in R, we need R to *remember* it. We need to name it! 
+
+Object assignment in R requires a few things
+* a name
+* `<-` or `=`
+* the object 
+
+For example, if we want to make an numeric object `3` that is called `a`, we could say `a <- 3`. Then if we typed `a` into the console, R would say `3`. 
+
+We already know how to tell R to read our data, so all we need is a name and ` <- `. Let's try it:
+(ps we'll be using tibbles here)
+```
+data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
+```
+
+No output lines printed in your console! Instead, you should now be able to see object `data` in your `environment`. 
+
+***
+__Pro tip:__ `Alt` +  `-` (or `option` + `-` for mac) will insert ` <- `. While ` <- ` and `=` *technically* interchangable when assigning a variable, it is useful to use ` <- ` for assignment operators since `=` is used for assigning arguments *within* a function.  
+***
+
+This data, like most data you will work with, does not have all of our information. For your own study system, you probably have (or need to make) a mapping file that details metadata for each site/ sample. In this case, we have information on the fire history of each site and the temperature of each site. Let's read in our metadata:
+```
+meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
+```
 
 
