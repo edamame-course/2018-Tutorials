@@ -154,7 +154,7 @@ In this section, we will focus on reading dataframes/ tibbles into R. In other w
 
 For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned the `2018-tutorials` repository, you should have the data file on your computer. Navigate to `2018-tutorials/data_visualization/data` folder, and you should see a file `gene_abundance_centralia.txt`. It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
 
-# `read` functions
+### `read` functions
 First, we will read this file into R as a data.frame with the function `read.delim()`. The file is currently outside of R, so we will put it in quotes. 
 ```
 read.delim("data/gene_abundance_centralia.txt")
