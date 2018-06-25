@@ -51,7 +51,7 @@ geneA <- data.annotated %>%
   subset(Gene == "arsM")
 ```
 
-## Basic plotting with ggplot
+## DATA layers: Basic plotting with ggplot
 Let's talk a little about the grammar of graphics and how plotting is structured in the `ggplot2` package.
 
 Now that we know what to expect, let's plot stuff! The `ggplot` command is used to plot graphs in R... let's try it with our tiny dataset `geneA`:
@@ -59,52 +59,52 @@ Now that we know what to expect, let's plot stuff! The `ggplot` command is used 
 ```
 ggplot(geneA)
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot.png" width="400">
 
 Looks like we need to add some aesthetics using `aes`. To start, we will use `Fire_history` as our x-value and `Normalized.abundance` for our y-value
 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance))
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot_xy.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_plot_xy.png" width="400">
 
 * __Checkpoint:__ _What type of data is this? What's missing here?_
 
-## Adding Geometric layers
+## GEOMETRIC layers
 Geometric layers are added with functions that have a `geom_` prefix. Let's try adding points to our plot:
 
 ```
 ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   geom_point() 
 ```
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_points.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_points.png" width="400">
 
 * __Pro tip:__ it seems like a `%>%` would be appropriate to use here, but unfortunately, `ggplot` was created before the pipe existed. To layer in `ggplot`, you *must* use `+`
 * __Checkpoint:__ _What's a better way of looking at this data?_
 * __Activity 2:__ Let's try a boxplot instead of a point.
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_boxplot.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/plain_boxplot.png" width="400">
 
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 * __Checkpoint:__ _How do we add points to this plot? How can we control what is the top layer?_
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_point.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_point.png" width="400">
 
 This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
 * __Pro tip:__ When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
 * __Activity 3:__ Make a boxplot with jittered points that are larger and colored
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_better.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_better.png" width="400">
 
 * __Checkpoint:__ _How would we know what our options are within a function? Why is the color in quotes?_
 
-## Aesthetic layers
+## AESTHETIC layers
 We are already a little familiar with aesthetics since we used `aes` to designate our x and y values. Based on this, _can you guess when it is appropriate to use `aes`?
 
 * __Activity 4:__ let's add color to the plot based on the temperature of a site.
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp.png" width="400">
 
 * __Checkpoint:__ _Where is the best place to designate color? Why?_
 
@@ -119,7 +119,7 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
   scale_color_continuous(low = "yellow", high = "red")
 ```
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_better.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_better.png" width="400">
 
 
 * __Checkpoint:__ _What scale would we use if we did not have continuous data?_  
@@ -127,16 +127,16 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 * __Pro tip:__ You can do this within a function as well! For example, `scale_color_continuous(` and `tab` will bring up options such as `low` and `high`, which we used in this function!
 * __Pro tip:__ To find full information on a function, use a `?`. For example `?scale_color_continuous`. To search for packages, use `??` instead. 
 
-## Coordinate layers
+## COORDINATE layers
 As the name implies, coordinate layers impact the *coordinates* of a plot. 
 
 * __Pro tip:__ It is recomended to flip coordinates when labels for your x values are long and difficult to read
 * __Activity 5:__ flip the x and y coordinates
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_flip.png" width="600">
+<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_jitter_temp_flip.png" width="400">
 
 
-## Facet layers
+## FACET layers
 As microbial ecologists, you probably are working with more than one gene (or taxonomic group or organism) at a time. This makes faceting very useful. The word facet literally means side or plane. Thus, faceting in R will will separate your plot into multiple panels to show the different sides/ planes of your data. To explore faceting, let's go back to our full dataset `data.annotated`. As you might expect, facet functions begin with the prefix `facet_`. 
 
 ```
@@ -154,7 +154,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
 
 <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_facet_free.png" width="600">
 
-## Theme layers
+## THEME layers
 With an additional line of code, you can easily change the "ambience" or theme of your plot. Theme functions have the prefix `theme`.
 
 * __Activity 6:__ change the theme of your plot
@@ -175,7 +175,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
 
 
 
-## Label layers
+## LABEL layers
 It can be annoying to have spaces within data in R. We get around this by using `.` or `_` as spaces, but those are not ideal when publishing a figure. Label or `lab` functions can be used to easily adjust labels on a plot. Let's try some:
 
 ``` 
