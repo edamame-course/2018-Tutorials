@@ -262,3 +262,5 @@ geneA <- data.annotated %>%
   subset(Gene == "arsM")
 ```
 
+## Congratulations! You're ready for plotting! 
+On to the [data visualization](https://github.com/edamame-course/2018-Tutorials/blob/master/data_visualization/data_visualization_tutorial.md) tutorial!
