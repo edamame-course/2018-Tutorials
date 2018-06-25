@@ -232,3 +232,33 @@ meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
 ```
 
 
+### Annotating your data
+Let's add our metadata to our data. Here we will assign a new variable using ` <- `. We will also use a pipe `%>%`, which means "then do" in R. The code reads as follows take `data` then do a `left_join` with `meta` by the `Site` column. 
+
+```
+data.annotated <- data %>%
+  left_join(meta, by = "Site")
+```
+
+* __Activity:__ what does this line of code say? 
+
+
+### Saving a table
+You might want to save this annotated data so that you have it handy in the future. We will export it here:
+
+```
+write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+```
+
+* We have exported it to our output folder for organizational purposes
+* You can call the file whatever you want. We recomend using a useful file extension. For tab delimited file, `.txt` or `.tsv` is appropriate; for a comma separated file, `.csv` is appropriate
+* You can specify your own separation with `sep = `
+* We added `row.names = FALSE` and `quote = FALSE` to clean up the output file. Try to save it without these, and see what you get!
+
+## Subsetting data
+At some point in your workflow, you might be interested in subsetting your data. The simplest way to do this with the function `subset()`. 
+```
+geneA <- data.annotated %>%
+  subset(Gene == "arsM")
+```
+
