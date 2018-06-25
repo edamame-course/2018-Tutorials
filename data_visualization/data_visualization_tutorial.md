@@ -109,7 +109,7 @@ We are already a little familiar with aesthetics since we used `aes` to designat
 * __Checkpoint:__ _Where is the best place to designate color? Why?_
 
 
-## Scale layers
+## Adjusting scales
 Our plot is looking good! Let's control the temperature color so that it's easier to see. For this we would use `scale_color_continuous` 
 
 ```
@@ -175,7 +175,7 @@ ggplot(data.annotated, aes(x = Fire_history, y = Normalized.abundance)) +
 
 
 
-## LABEL layers
+## Labeling 
 It can be annoying to have spaces within data in R. We get around this by using `.` or `_` as spaces, but those are not ideal when publishing a figure. Label or `lab` functions can be used to easily adjust labels on a plot. Let's try some:
 
 ``` 
