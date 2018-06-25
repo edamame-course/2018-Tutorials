@@ -31,55 +31,25 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
 ## Before you begin
 Make sure you go through the [Intro R](https://github.com/edamame-course/2018-Tutorials/edit/master/Intro_R_RStudio/R_tutorial.md) tutorial! 
 
-If you really want to skip that tutorial, you will still need to load the tidyverse.
-`library(tidyverse)`
-
-## Reading in/ tidying data
-For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned this repository, you should have the data file in your `data` folder (`gene_abundance_centralia.txt`). It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
-
-### Reading in data
-Let's read in our gene abundance data:
-
+If you really want to skip that tutorial, you will still need to set up your R environment. See below:
 ```
+#load required packages
+library(tidyverse)
+
+# read in data file
 data <- read_delim("data/gene_abundance_centralia.txt", delim = "\t")
-```
 
-* __Pro tip:__ `Alt` +  `-` (or `option` + `-` for mac) will insert ` <- `. While ` <- ` and `=` *technically* interchangable when assigning a variable, it is useful to use ` <- ` for assignment operators since `=` is used for assigning arguments *within* a function.  
-
-This data, like most data you will work with, does not have all of our information. For your own study system, you probably have (or need to make) a mapping file that details metadata for each site/ sample. In this case, we have information on the fire history of each site and the temperature of each site. Let's read in our metadata:
-```
+# read in meta data
 meta <- read_delim("data/Centralia_temperature.txt", delim = "\t")
-```
 
-### Annotating your data
-Let's add our metadata to our data. Here we will assign a new variable using ` <- `. We will also use a pipe `%>%`, which means "then do" in R. The code reads as follows take `data` then do a `left_join` with `meta` by the `Site` column. 
-
-```
+#annotate data (join data and metadata)
 data.annotated <- data %>%
   left_join(meta, by = "Site")
-```
-
-### Saving a table
-You might want to save this annotated data so that you have it handy in the future. We will export it here:
-
-```
-write.table(data.annotated, "output/gene_data_annotated.txt", sep = "\t", row.names = FALSE, quote = FALSE)
-```
-
-* We have exported it to our output folder for organizational purposes
-* You can call the file whatever you want. We recomend using a useful file extension. For tab delimited file, `.txt` or `.tsv` is appropriate; for a comma separated file, `.csv` is appropriate
-* You can specify your own separation with `sep = `
-* We added `row.names = FALSE` and `quote = FALSE` to clean up the output file. Try to save it without these, and see what you get!
-
-## Subsetting data
-To start plotting, we will use the simplest form of data (ie one gene only). 
-
-```
+  
+# subset data to include only one gene
 geneA <- data.annotated %>%
   subset(Gene == "arsM")
 ```
-
-* __Activity 1:__ what does this line of code say? 
 
 ## Basic plotting with ggplot
 Let's talk a little about the grammar of graphics and how plotting is structured in the `ggplot2` package.
