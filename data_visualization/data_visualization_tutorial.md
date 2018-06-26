@@ -88,8 +88,6 @@ ggplot(geneA, aes(x = Fire_history, y = Normalized.abundance)) +
 Boxplots are more useful than bars for this data because they show the variability. Even still, we might want to add points *on top of* the boxplots so that readers can see the points as well. 
 * __Checkpoint:__ _How do we add points to this plot? How can we control what is the top layer?_
 
-<img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/boxplot_point.png" width="400">
-
 This plot still does not highlight all of our information. The points are too small, too close together, and hard to see over the black lines of the boxplots.
 
 * __Pro tip:__ When there are a lot of points with similar y-values and when the x-value is categorical, it can be helpful to spread them out. This is done with a different geom: `geom_jitter`
