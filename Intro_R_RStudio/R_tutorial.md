@@ -88,6 +88,7 @@ People often cite R projects as par of "best practices" for reproducible workflo
 * Saves your R environment for a particular project
   * This is useful when you are working on multiple projects at once (aka you're a scientist). You can work on one project in RStudio without mixing your R `Environment`
 * Run multiple RStudio's at once and literally work on two projects at the same time
+  * <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/rproj_dock.png" width="600"> 
 
 
 ### Creating an R Project
