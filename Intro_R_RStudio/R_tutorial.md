@@ -149,10 +149,21 @@ These data types can be put into different data structures based on their dimens
 Now that we can get around a little in R, let's play with some data! As microbial ecologists, you will often work with tables of data such as data frames/ tibbles, so we will explore these now.
 
 ***
+
 ## Reading data into R
 In this section, we will focus on reading dataframes/ tibbles into R. In other words, we will read in some data that is multi-dimensional (has rows and columns) and contains different data types (has both numbers and characters). Reading data into R requires `read` functions. 
 
 For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned the `2018-tutorials` repository, you should have the data file on your computer. Navigate to `2018-tutorials/data_visualization/data` folder, and you should see a file `gene_abundance_centralia.txt`. It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
+
+First, we all need to have the data on our computers! 
+* If you use GitHub, you can clone the repository with the following code:
+```
+git clone https://github.com/edamame-course/2018-Tutorials.git
+```
+* If you do not have/use GitHub, you can download the repository from your web browser. Press Clone/Download and then Download Zip
+ <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/git_download.png" width="400"> 
+
+
 
 ### `read` functions
 First, we will read this file into R as a data.frame with the function `read.delim()`. The file is currently outside of R, so we will put it in quotes. 
