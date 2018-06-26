@@ -155,14 +155,17 @@ In this section, we will focus on reading dataframes/ tibbles into R. In other w
 
 For this tutorial we will use *real* data! This is gene abundance data from a site in Centralia, PA. If you cloned the `2018-tutorials` repository, you should have the data file on your computer. Navigate to `2018-tutorials/data_visualization/data` folder, and you should see a file `gene_abundance_centralia.txt`. It tells us the normalized abundance for each Site (13 total) and each gene (9 total).
 
-First, we all need to have the data on our computers! 
+First, we all need to have the data on our computers! You can choose your own adventure to get the data, but either way, you need to remember where you put it on your computer. 
+
 * If you use GitHub, you can clone the repository with the following code:
 ```
 git clone https://github.com/edamame-course/2018-Tutorials.git
 ```
-* If you do not have/use GitHub, you can download the repository from your web browser. Press Clone/Download and then Download Zip
+* If you do not have/use GitHub, you can download the repository from your web browser. 
+  * Go to [https://github.com/edamame-course/2018-Tutorials](https://github.com/edamame-course/2018-Tutorials)
+  * Press Clone/Download
  <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/git_download.png" width="400"> 
-
+  * Press Download Zip
 
 
 ### `read` functions
