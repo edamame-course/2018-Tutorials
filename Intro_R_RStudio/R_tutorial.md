@@ -137,6 +137,8 @@ __Pro tip:__ It is a good idea to load all required packages at the beginning of
 ## Data types and structure in R
 R recognizes several types of data/information
 * Numeric
+  * integer
+  * double
 * Logical
 * Character
 * Factor (a character with *levels*)
