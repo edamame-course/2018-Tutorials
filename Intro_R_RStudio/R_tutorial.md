@@ -164,8 +164,8 @@ git clone https://github.com/edamame-course/2018-Tutorials.git
 * If you do not have/use GitHub, you can download the repository from your web browser. 
   * Go to [https://github.com/edamame-course/2018-Tutorials](https://github.com/edamame-course/2018-Tutorials)
   * Press Clone/Download
- <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/git_download.png" width="400"> 
   * Press Download Zip
+  * <img src="https://github.com/edamame-course/2018-Tutorials/blob/master/images/git_download.png" width="400"> 
 
 
 ### `read` functions
