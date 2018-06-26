@@ -13,11 +13,9 @@ EDAMAME tutorials have a CC-BY [license](https://github.com/edamame-course/2015-
 * Appreciate why a scientist writes code and why R specifically
 * Become familiar with RStudio
 * Manage your workspace in an interactive R session
-* Use basic math functions in R, with calculator and fun() notation
 * Understand variables and how to assign to them
-* Understand errors, warnings, and messages
 * Be able to seek help via ? and Google
-* Be able to data into R
+* Be able to read data into R
 * Be able to examine the structure and content of a data frame.
 
 ## Required tools
